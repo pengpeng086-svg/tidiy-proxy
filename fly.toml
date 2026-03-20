@@ -1,19 +1,23 @@
-# Fly.io 配置 - tidiy 反向代理
-app = "tidiy-proxy"
-primary_region = "hkg"
+# fly.toml app configuration file generated for tidiy-proxy on 2026-03-20T07:07:27Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'tidiy-proxy'
+primary_region = 'sin'
 
 [build]
-  dockerfile = "Dockerfile"
 
 [http_service]
-  internal_port = 80
+  internal_port = 8080
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
 [[vm]]
-  memory = "256mb"
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 256
